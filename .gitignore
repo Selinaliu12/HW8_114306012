@@ -1,0 +1,8 @@
+target/
+.idea/
+.vscode/
+*.iml
+.DS_Store
+# 本機私密設定（放真實 API 金鑰用，不要 commit）
+src/main/resources/application-local.properties
+.env

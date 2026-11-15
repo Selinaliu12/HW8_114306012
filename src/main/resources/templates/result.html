@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${query} + ' - Seekly 搜尋'">Seekly 搜尋</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<header class="topbar">
+    <a class="logo" th:href="@{/}"><span>S</span><span>e</span><span>e</span><span>k</span><span>l</span><span>y</span></a>
+    <form class="search-form" th:action="@{/search}" method="get">
+        <input type="text" name="q" th:value="${query}" required>
+        <button type="submit">搜尋</button>
+    </form>
+</header>
+
+<main class="results">
+    <div th:if="${error}" class="empty">
+        <h2 class="error" th:text="${error}">錯誤</h2>
+    </div>
+
+    <th:block th:if="${error == null}">
+        <div th:if="${#lists.isEmpty(results)}" class="empty">
+            <h2>沒有找到與「<span th:text="${query}"></span>」相關的結果</h2>
+            <ul>
+                <li>請確認關鍵字的拼字是否正確</li>
+                <li>試試其他或更一般的關鍵字</li>
+                <li>減少關鍵字的數量</li>
+            </ul>
+        </div>
+
+        <th:block th:unless="${#lists.isEmpty(results)}">
+            <p class="meta">找到 <span th:text="${#lists.size(results)}"></span> 筆結果</p>
+            <div class="result" th:each="r : ${results}">
+                <div class="url" th:text="${r.url}">https://example.com</div>
+                <h3><a th:href="${r.url}" th:text="${r.title}" target="_blank" rel="noopener">標題</a></h3>
+                <p th:text="${r.content}">摘要</p>
+            </div>
+        </th:block>
+    </th:block>
+</main>
+</body>
+</html>

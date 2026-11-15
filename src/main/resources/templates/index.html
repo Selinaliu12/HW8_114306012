@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Seekly 搜尋</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<main class="home">
+    <a class="logo" th:href="@{/}"><span>S</span><span>e</span><span>e</span><span>k</span><span>l</span><span>y</span></a>
+    <form class="search-form" th:action="@{/search}" method="get">
+        <input type="text" name="q" placeholder="輸入關鍵字開始搜尋…" autofocus required>
+        <button type="submit">搜尋</button>
+    </form>
+    <p class="hint">Powered by Tavily Search API</p>
+</main>
+</body>
+</html>

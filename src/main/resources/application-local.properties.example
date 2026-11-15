@@ -1,0 +1,2 @@
+# 複製成 application-local.properties 並填入你的金鑰（該檔不會被 commit）
+tavily.apiKey=tvly-xxxxxxxxxxxxxxxx
